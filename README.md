@@ -207,7 +207,7 @@ restituisce il peso della foglia, se il nodo sul quale viene chiamato **è una f
 Il metodo 
 
 	template <typename T>
-	void trie<T>::set_label(T const* l);
+	void trie<T>::set_label(T* l);
 	
 salva l'etichetta `l` per l'arco entrante nel nodo, se esso **non** è da considerarsi la radice dell'albero. Se necessario, il metodo deve ri-ordinare i figli del padre del nodo sul quale è stato chiamato (ossia, i fratelli del nodo sul quale è stato chiamato), se la modifica dell'etichetta cambia questo ordine. Se `l` è già l'etichetta di un altro fratello del nodo sul quale è stato chiamato, il comportamento non è definito (potete agire come preferite; in fase di valutazione del codice non genereremo questa situazione).
 
@@ -221,7 +221,7 @@ Deve restituire l'etichetta del nodo, se il nodo sul quale viene chiamato **non*
 Il metodo
 
 	template <typename T>
-	void set_parent(trie<T> const* p);
+	void set_parent(trie<T>* p);
 
 stabilisce che il padre del nodo è il nodo puntato da `p`. Invece, il metodo
 
