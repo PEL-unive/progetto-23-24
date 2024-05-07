@@ -319,7 +319,11 @@ I seguenti due metodi di `trie<T>` restituiscono un `leaf_iterator` alla prima f
 	template <typename T>
 	leaf_iterator trie<T>::end();
 
-**Nota:** Non ci sono metodi `begin()` e `end()` che restituiscono un iteratore di tipo `node_iterator` o `const_node_iterator`.
+Il metodo
+
+	trie<T> const& get_leaf() const;
+	
+deve restituire una const reference alla foglia correntemente puntata dall'iteratore. Questo risulta comodo per accedere agli attributi della foglia (ad esempio, al peso).
 
 Il metodo
 
@@ -333,7 +337,7 @@ Combinando le funzionalità dei due iteratori, possiamo per esempio estrarre tut
 	for (auto leaf_it = t.begin(); leaf_it != t.end(); ++leaf_it) {
 		trie<T>::node_iterator node_it = leaf_it; // we convert leaf_it into node_it to navigate from leaf to root
 		std::vector<T> s;
-		while (node_it != t.root()) { // or simply while(node_it) by using operator bool() of node_iterator
+		while (node_it != t.root()) { // or simply while (node_it) by using operator bool() of node_iterator
 			s.push_back(*node_it);
 			++node_it;
 		}
@@ -342,7 +346,9 @@ Combinando le funzionalità dei due iteratori, possiamo per esempio estrarre tut
 		std::cout << '\n';
 	}
 
-**Nota importante:** Gli iteratori devono funzionare in modo consistente anche su *sotto-tries*.
+**Nota:** Non ci sono metodi `begin()` e `end()` che restituiscono un iteratore di tipo `node_iterator` o `const_node_iterator`.
+
+**Importante:** Gli iteratori devono funzionare in modo consistente anche su *sotto-tries*.
 Per far ciò, è essenziale fornire un'accurata implementazione dei metodi `root()`, `begin()` e `end()` di `trie<T>`. Infatti, notare che su un sotto-trie, tali metodi restituiranno iteratori alla radice/prima foglia/foglia successiva all'ultima foglia del *sotto-trie* che **non** necessariamente coincidono con la radice/prima foglia/foglia successiva all'ultima foglia del trie dal quale è stato istanziato il sotto-trie. Per esempio, considerate il trie di Figura 1. Chiamiamo questo trie `t`.
 Su questo trie, `t.begin()` è quindi un `leaf_iterator` alla foglia di peso `3.1`, mentre `t.end()` è un `leaf_iterator` alla posizione successiva alla foglia di peso `7.0`. Considerate ora il trie `t2` costruito come segue:
 
