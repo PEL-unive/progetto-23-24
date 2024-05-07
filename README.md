@@ -50,7 +50,9 @@ affinchè `trie<T>` sia ben definito:
 
 Per esempio, `T=double` soddisfa i requisiti sopra. Anche `T=std::string` li soddisfa, a patto che le stringhe non contengano separatori.
 
-Secondo la definizione ricorsiva data sopra, il caso base di `trie<T>` è una foglia. Una foglia viene rappresentata testualmente come segue:
+Il caso più semplice è un file vuoto, che codifica un `trie<T>` vuoto.
+
+A parte il file vuoto, secondo la definizione ricorsiva data sopra il caso base di `trie<T>` è una foglia. Una foglia viene rappresentata testualmente come segue:
 
 	x children = {}
 
@@ -66,9 +68,7 @@ dove `children` è la lista di figli del nodo; `x1`, `x2`, ... sono valori *dist
 Notare che le coppie `x trie` sono separate da una virgola. Per esempio, il seguente è un file valido in formato `trie<char>` che rappresenta il trie di Figura 1.
 
 	children = {
-	  a children = {
-		3.1 children = {}
-	  },
+	  a 3.1 children = {},
 	  b children = {
 		b 2.9 children = {},
 		c children = {
@@ -84,7 +84,7 @@ Un altro esempio. Il seguente è un file valido per un `trie<double>`.
 	children = {
 	  3.14 17.0 children = {},
 	  2.71 children = { 1.61 children = { 9.8 16.1 children = {} } },
-	  6.67 42.5 children = {}
+	  6.67 4.3 children = {}
 	}
 
 La rappresentazione grafica del `trie<double>` dell'esempio precedente è mostrato in Figura 2.
@@ -207,9 +207,11 @@ restituisce il peso della foglia, se il nodo sul quale viene chiamato **è una f
 Il metodo 
 
 	template <typename T>
-	void trie<T>::set_label(T* l);
+	void trie<T>::set_label(T const* l);
 	
-salva l'etichetta `l` per l'arco entrante nel nodo, se esso **non** è da considerarsi la radice dell'albero. Invece, il metodo 
+salva l'etichetta `l` per l'arco entrante nel nodo, se esso **non** è da considerarsi la radice dell'albero. Se necessario, il metodo deve ri-ordinare i figli del padre del nodo sul quale è stato chiamato (ossia, i fratelli del nodo sul quale è stato chiamato), se la modifica dell'etichetta cambia questo ordine. Se `l` è già l'etichetta di un altro fratello del nodo sul quale è stato chiamato, il comportamento non è definito (potete agire come preferite; in fase di valutazione del codice non genereremo questa situazione).
+
+Il metodo 
 
 	template <typename T>
 	T const* trie<T>::get_label() const;
@@ -219,7 +221,7 @@ Deve restituire l'etichetta del nodo, se il nodo sul quale viene chiamato **non*
 Il metodo
 
 	template <typename T>
-	void set_parent(trie<T>* p);
+	void set_parent(trie<T> const* p);
 
 stabilisce che il padre del nodo è il nodo puntato da `p`. Invece, il metodo
 
