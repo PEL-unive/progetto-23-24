@@ -108,8 +108,8 @@ struct trie {
 
     /* setters */
     void set_weight(double w);
-    void set_label(T const* l);
-    void set_parent(trie<T> const* p);
+    void set_label(T* l);
+    void set_parent(trie<T>* p);
     void add_child(trie<T> const& c);
 
     /* getters */
