@@ -192,7 +192,8 @@ Costruisce una foglia con peso pari all'argomento `w`. Per esempio, `trie<char>:
 
 ### 3.4. Setters/Getters
 
-**Nota:** i setters/getters sono funzioni di supporto che facilitano la scrittura del parser (il parser è un insieme di funzioni esterne alla classe, che non hanno quindi accesso ai membri privati di trie). Noi **non testeremo** le funzioni setters/getters in fase di valutazione del progetto, quindi siete liberi di implementare internamente la logica che ritenete più opportuna per risolvere l'esercizio. Suggerimento: le funzioni setters/getters servono solo in fase di inizializzazione di nodi, quindi non devono fare altro che sovrascrivere/restituire le variabili corrispondenti.
+I setters/getters sono funzioni di supporto che facilitano la scrittura del parser (il parser è un insieme di funzioni esterne alla classe, che non hanno quindi accesso ai membri privati di trie).
+Esse servono, quindi, soltanto a costruire un oggetto trie durante il parsing: **non dovrebbero essere usate per modificare il trie dopo la sua creazione** (ad esempio, per cambiare la label su un arco).
 
 Il metodo 
 
