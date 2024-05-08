@@ -83,7 +83,7 @@ Un altro esempio. Il seguente è un file valido per un `trie<double>`.
 
 	children = {
 	  3.14 17.0 children = {},
-	  2.71 children = { 1.61 children = { 9.8 16.1 children = {} } },
+	  2.71 children = { 1.61 children = { 9.8 6.1 children = {} } },
 	  6.67 4.3 children = {}
 	}
 
