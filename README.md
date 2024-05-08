@@ -211,7 +211,7 @@ Il metodo
 	template <typename T>
 	void trie<T>::set_label(T* l);
 	
-salva l'etichetta `l` per l'arco entrante nel nodo, se esso **non** è da considerarsi la radice dell'albero. Se necessario, il metodo deve ri-ordinare i figli del padre del nodo sul quale è stato chiamato (ossia, i fratelli del nodo sul quale è stato chiamato), se la modifica dell'etichetta cambia questo ordine. Se `l` è già l'etichetta di un altro fratello del nodo sul quale è stato chiamato, il comportamento non è definito (potete agire come preferite; in fase di valutazione del codice non genereremo questa situazione).
+salva l'etichetta `l` per l'arco entrante nel nodo, se esso **non** è da considerarsi la radice dell'albero. Se `l` è già l'etichetta di un altro fratello del nodo sul quale è stato chiamato, il comportamento non è definito (potete agire come preferite; in fase di valutazione del codice non testeremo i setters/getters).
 
 Il metodo 
 
