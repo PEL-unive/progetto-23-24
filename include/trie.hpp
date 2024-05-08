@@ -5,7 +5,7 @@
 #include "bag.hpp"  // file with the implementation of your container bag<Val>
 
 struct parser_exception {
-    parser_exception(const std::string& str): m_str(str) {}
+    parser_exception(std::string const& str): m_str(str) {}
 
     std::string what() const { return m_str; }
 
