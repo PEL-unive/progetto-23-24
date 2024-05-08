@@ -83,7 +83,7 @@ Un altro esempio. Il seguente è un file valido per un `trie<double>`.
 
 	children = {
 	  3.14 17.0 children = {},
-	  2.71 children = { 1.61 children = { 9.8 6.1 children = {} } },
+	  2.71 children = { 1.61 children = { 9.8 16.1 children = {} } },
 	  6.67 4.3 children = {}
 	}
 
@@ -212,7 +212,7 @@ Il metodo
 	template <typename T>
 	void trie<T>::set_label(T* l);
 	
-salva l'etichetta `l` per l'arco entrante nel nodo, se esso **non** è da considerarsi la radice dell'albero. Se `l` è già l'etichetta di un altro fratello del nodo sul quale è stato chiamato, il comportamento non è definito (potete agire come preferite; in fase di valutazione del codice non testeremo i setters/getters).
+salva l'etichetta `l` per l'arco entrante nel nodo, se esso **non** è da considerarsi la radice dell'albero. Se necessario, il metodo deve ri-ordinare i figli del padre del nodo sul quale è stato chiamato (ossia, i fratelli del nodo sul quale è stato chiamato), se la modifica dell'etichetta cambia questo ordine. Se `l` è già l'etichetta di un altro fratello del nodo sul quale è stato chiamato, il comportamento non è definito (potete agire come preferite; in fase di valutazione del codice non genereremo questa situazione).
 
 Il metodo 
 
@@ -248,6 +248,20 @@ aggiunge il nodo figlio `c` al nodo corrente (che chiamiamo il padre `p`). Ricor
 
 **Importante:** I figli sono memorizzati nel container `bag` in **ordine crescente** di etichetta (si ricordi che le etichette sono tutte distinte). L'ordinamento viene imposto usando `operator<` definito sul tipo `T`.
 
+Quindi **non** potete assumere che i figli siano già ordinati nel formato testuale. Per esempio, i due seguenti file sono entrambi validi e devono generare due istanze identiche di `trie<std::string>`.⁠
+
+	children = {
+		languages children = { c++ 1.1 children = {}, java 0.5 children = {} },
+		compilers children = { g++ 2.8 children = {}, javac 3.1 children = {} }
+	}
+
+e
+
+	children = {
+		compilers children = { javac 3.1 children = {}, g++ 2.8 children = {} },
+		languages children = { c++ 1.1 children = {}, java 0.5 children = {} }
+	}
+ 
 ### 3.5. Confronto
 
 	template <typename T>
@@ -256,8 +270,8 @@ aggiunge il nodo figlio `c` al nodo corrente (che chiamiamo il padre `p`). Ricor
 	template <typename T>
 	bool trie<T>::operator!=(trie<T> const&) const;
 
-Un trie è uguale ad un altro se tutti i nodi e gli archi sono uguali (in particolare, il set dei figli di un nodo deve memorizzare i figli nello stesso ordine di un altro, che deve essere necessariamente quello imposto da `operator<` sul tipo `T`).
-
+Un trie è uguale ad un altro se tutti i nodi e gli archi sono uguali (in particolare, il set dei figli di un nodo deve memorizzare i figli nello stesso ordine di un altro, che deve essere necessariamente quello imposto da `operator<` sul tipo `T`). 
+ 
 ### 3.6. Prefix search: `operator[]`
 
 I metodi
@@ -268,20 +282,20 @@ I metodi
 	template <typename T>
 	trie<T> const& trie<T>::operator[](std::vector<T> const& s) const;
 
-Devono restituire una reference/const-reference al *sotto-trie* raggiunto leggendo la sequenza `s` a partire dalla radice del trie. Per esempio, sia `t` il `trie<std::char>` di Figura 1. Dopo l'esecuzione del seguente codice:
+Devono restituire una reference/const-reference al *sotto-trie* raggiunto seguendo **il maggior numero** di elementi di `s` a partire dalla radice del trie. Per esempio, sia `t` il `trie<std::char>` di Figura 1. Dopo l'esecuzione del seguente codice:
 
-	std::vector<char> s{'b'};
+	std::vector<char> s{'b', 'c', 'z'};
 	auto x = t[s];
 
-la variabile `x` deve contenere una reference/const-reference al seguente *sotto-trie*:
+la variabile `x` deve contenere una reference/const-reference al *sotto-trie* di Figura 4, perchè dalla radice del trie originale è possibile seguire `'b'`, seguito da `'c'`, ma non `'z'`.
 
 <p align="center">
-	<img src="figures/trie4-1.png" width="130">
+	<img src="figures/trie4-1.png" width="50">
  	<br>
-  	Figura 4: Seguendo la sequenza &lt;'b'&gt; dalla radice del trie di Figura 1, si raggiunge questo trie.
+  	Figura 4: Seguendo il maggior numero di elementi dalla sequenza &lt;'b','c','z'&gt;, a partire dalla radice del trie di Figura 1, si raggiunge questo trie.
 </p>
 
-**Nota:** Ovviamente la sequenza `s` può contenere più di un elemento.
+**Nota:** Notare che se non è possibile seguire nessun elemento di `s`, allora la reference al trie coincide con la reference al trie originale.
 
 ### 3.7. Iteratori
 
