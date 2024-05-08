@@ -147,7 +147,7 @@ file `include/trie.hpp`.
 		double m_w;        // weight
 	};
 
-Siete liberi di implementare a vostro piacimento il container `bag`, che mantiene l'insieme dei nodi figli ordinati per etichetta crescente (usando opportunatamente `operator<` definito su `T`). Notate the `trie.hpp` include `bag.hpp`. Dovrete implementare `bag.hpp` in maniera *header-only*, ossia dichiarazione e definizione del container devono essere entrambe presenti in `include/bag.hpp`. 
+Siete liberi di implementare a vostro piacimento il container `bag`, che mantiene l'insieme dei nodi figli ordinati per etichetta crescente (usando opportunatamente `operator<` definito su `T`). Notate the `trie.hpp` include `bag.hpp`. Dovrete implementare `bag.hpp` in maniera *header-only*, ossia dichiarazione e definizione del container devono essere entrambe presenti in `include/bag.hpp`. Suggeriamo di scrivere prima `trie.cpp` e, in base alle operazioni che vi servono su `m_c`, implementare successivamente `bag.hpp`.
 
 **Importante:** Il file `trie.hpp` non va modificato in alcun modo. In particolare, non potete aggiungere membri di classe (nuove attributi, funzioni, tipi). Compileremo il codice usando la versione di `trie.hpp` contenuta su questo repository, quindi se fate delle modifiche a questo file, con ogni probabilità il vostro codice non compilerà sul nostro sistema.
 
@@ -192,7 +192,7 @@ Costruisce una foglia con peso pari all'argomento `w`. Per esempio, `trie<char>:
 
 ### 3.4. Setters/Getters
 
-**Nota:** i setters/getters sono funzioni di supporto che facilitano la scrittura del parser (il parser è un insieme di funzioni esterne alla classe, che non hanno quindi accesso ai membri privati di trie). Noi **non testeremo** le funzioni setters/getters in fase di valutazione del progetto, quindi siete liberi di implementare internamente la logica che ritenete più opportuna a risolvere l'esercizio. Suggerimento: le funzioni setters/getters servono solo in fase di inizializzazione di nodi, quindi non devono fare altro che sovrascrivere/restituire le variabili corrispondenti.
+**Nota:** i setters/getters sono funzioni di supporto che facilitano la scrittura del parser (il parser è un insieme di funzioni esterne alla classe, che non hanno quindi accesso ai membri privati di trie). Noi **non testeremo** le funzioni setters/getters in fase di valutazione del progetto, quindi siete liberi di implementare internamente la logica che ritenete più opportuna per risolvere l'esercizio. Suggerimento: le funzioni setters/getters servono solo in fase di inizializzazione di nodi, quindi non devono fare altro che sovrascrivere/restituire le variabili corrispondenti.
 
 Il metodo 
 
