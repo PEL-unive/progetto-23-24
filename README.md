@@ -494,6 +494,10 @@ viene compattato in quello di Figura 12.
   	Figura 12: Compattazione del trie di Figura 11.
 </p>
 
+**Nota**: In seguito alla compattazione, le etichette degli archi cambiano. Questo, a sua volta, potrebbe modificare l'ordine dei figli dei nodi coinvolti.
+
+**Nota**: Se, in seguito alla compattazione, si generano due etichette uguali tra archi entranti di due nodi fratelli, il comportamento della funzione non è definito (in particolare, potete assumere che in fase di testing noi non genereremo mai una situazione di questo tipo). 
+
 ## 4. Come testare il vostro codice?
  
 Ricordate la regola generale: la scrittura del codice è solo metà del lavoro! La metà rimanente consiste nel progettare dei test approfonditi per rilevare eventuali bug. In fase di valutazione, il nostro compito sarà quello di mettere sotto stress il vostro codice (testandolo sui file più disparati, sia in formato trie valido che non, e combinando operatori in tutti i modi possibili), quindi progettate degli ottimi test e ricordatevi di compilare il codice con gli strumenti di debug mostrati a lezione (assert e compiler sanitizers). Ricordatevi anche di usare Valgrind.
