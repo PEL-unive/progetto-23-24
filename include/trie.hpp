@@ -5,7 +5,7 @@
 #include "bag.hpp"  // file with the implementation of your container bag<Val>
 
 struct parser_exception {
-    parser_exception(std::string const& str): m_str(str) {}
+    parser_exception(std::string const& str) : m_str(str) {}
 
     std::string what() const { return m_str; }
 
@@ -29,7 +29,6 @@ struct trie {
         node_iterator operator++(int);
         bool operator==(node_iterator const&) const;
         bool operator!=(node_iterator const&) const;
-        operator bool() const;
 
     private:
         trie<T>* m_ptr;
@@ -47,7 +46,6 @@ struct trie {
         const_node_iterator operator++(int);
         bool operator==(const_node_iterator const&) const;
         bool operator!=(const_node_iterator const&) const;
-        operator bool() const;
 
     private:
         trie<T> const* m_ptr;

@@ -319,8 +319,6 @@ Questo iteratore punta ad un qualsiasi nodo del trie. L'operatore `operator++` d
 	template <typename T>
 	node_iterator trie<T>::root();
 
-Per comodità, il metodo `operator bool()` di `node_iterator` deve restituire `false` solo sulla radice (e quindi `true` su tutti gli altri nodi).
-
 Il secondo iteratore è `leaf_iterator`.
 
 	template <typename T>
@@ -356,7 +354,7 @@ Combinando le funzionalità dei due iteratori, possiamo per esempio estrarre tut
 	for (auto leaf_it = t.begin(); leaf_it != t.end(); ++leaf_it) {
 		trie<T>::node_iterator node_it = leaf_it; // we convert leaf_it into node_it to navigate from leaf to root
 		std::vector<T> s;
-		while (node_it != t.root()) { // or simply while (node_it) by using operator bool() of node_iterator
+		while (node_it != t.root()) {
 			s.push_back(*node_it);
 			++node_it;
 		}
