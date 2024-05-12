@@ -244,7 +244,7 @@ Infine, il metodo
 	template <typename T>
 	void add_child(trie<T> const& c);
 
-aggiunge il nodo figlio `c` al nodo corrente (che chiamiamo il padre `p`). Ricordatevi di specificare un'etichetta `l` per l'arco `(p,c)` usando il metodo `set_label` su `c` prima di passarlo come argomento di `add_child`. Il figlio `c` sarà quindi aggiunto alla `bag` dei figli di `p` in posizione appropriata (vedi nota sotto).
+aggiunge il nodo figlio `c` al nodo corrente (che chiamiamo il padre `p`). Ricordatevi di specificare un'etichetta `l` per l'arco `(p,c)` usando il metodo `set_label` su `c` prima di passarlo come argomento di `add_child`. Il figlio `c` sarà quindi aggiunto alla `bag` dei figli di `p` in posizione appropriata (vedi nota sotto). **Nota**: il comportamento di questa funzione non è definito quando essa viene chiamata su una foglia.
 
 **Importante:** I figli sono memorizzati nel container `bag` in **ordine crescente** di etichetta (si ricordi che le etichette sono tutte distinte). L'ordinamento viene imposto usando `operator<` definito sul tipo `T`.
 
