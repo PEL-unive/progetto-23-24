@@ -190,6 +190,8 @@ Costruisce una foglia con peso pari all'argomento `w`. Per esempio, `trie<char>:
 	template <typename T>
 	trie<T>& trie<T>::operator=(trie<T>&&);
 
+**Nota**: copy e move assignments devono lasciare il trie a sinistra dell'operatore in uno stato consistente. In particolare, se `operator=` viene usato per rimpiazzare il sotto-trie `u` di un trie `T` con il sotto-trie `u'` di un secondo trie `T'`, allora la copia di `u'` inserita in `T` dovrà avere il padre in `T`, non in `T'`! stesso discorso per l'etichetta entrante in `u'`, che deve rimanere quella che aveva `u` in `T` (questa questione è stata discussa più in dettaglio in una delle issues, controllate le issues "closed").
+
 ### 3.4. Setters/Getters
 
 I setters/getters sono funzioni di supporto che facilitano la scrittura del parser (il parser è un insieme di funzioni esterne alla classe, che non hanno quindi accesso ai membri privati di trie).
