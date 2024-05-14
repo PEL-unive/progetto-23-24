@@ -383,9 +383,9 @@ Su questo trie, `t2.begin()` è quindi un `leaf_iterator` alla foglia di peso `2
 Infine, il metodo
 
 	template <typename T>
-	trie<T> const& trie<T>::leaf_iterator::get_leaf() const;
+	trie<T>& trie<T>::leaf_iterator::get_leaf() const;
 
-restituisce una const reference alla foglia puntata dall'istanza di `leaf_operator` sul quale è chiamato.
+restituisce una reference alla foglia puntata dall'istanza di `leaf_operator` sul quale è chiamato.
 
 ### 3.8. Foglia di peso massimo
 
