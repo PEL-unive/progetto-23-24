@@ -64,7 +64,7 @@ Un nodo interno del formato associato a `trie<T>` viene invece codificato testua
 
 	children = { x1 trie1, x2 trie2, ... }
 
-dove `children` è la lista di figli del nodo; `x1`, `x2`, ... sono valori *distinti* (importante! valori ripetuti tra i figli sono da considerarsi un errore di formato) di tipo `T` che etichettano gli archi entranti nei figli e `trie1`, `trie2`, ... sono (ricorsivamente) i figli del nodo (dei `trie<T>`).
+dove `children` è la lista di figli del nodo; `x1`, `x2`, ... sono valori *distinti* (importante! valori ripetuti tra le etichette dei figli sono da considerarsi un errore di formato) di tipo `T` che etichettano gli archi entranti nei figli e `trie1`, `trie2`, ... sono (ricorsivamente) i figli del nodo (dei `trie<T>`).
 Notare che le coppie `x trie` sono separate da una virgola. Per esempio, il seguente è un file valido in formato `trie<char>` che rappresenta il trie di Figura 1.
 
 	children = {
