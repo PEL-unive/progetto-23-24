@@ -66,7 +66,7 @@ struct trie {
         bool operator!=(leaf_iterator const&) const;
         operator node_iterator() const;
 
-        trie<T> const& get_leaf() const;
+        trie<T>& get_leaf() const;
 
     private:
         trie<T>* m_ptr;
