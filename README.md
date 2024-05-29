@@ -544,8 +544,8 @@ Seguite **esattamente** queste istruzioni. Qualsiasi altra cosa (archivio non in
 
 Le scadenze estive sono:
 
-- 15 giugno;
-- 15 luglio.
+- **20** giugno;
+- **20** luglio.
 
 I seguenti appelli saranno a settembre e gennaio. 
 
