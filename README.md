@@ -147,7 +147,7 @@ file `include/trie.hpp`.
 		double m_w;        // weight
 	};
 
-Siete liberi di implementare a vostro piacimento il container `bag`, che mantiene l'insieme dei nodi figli ordinati per etichetta crescente (usando opportunatamente `operator<` definito su `T`). Notate the `trie.hpp` include `bag.hpp`. Dovrete implementare `bag.hpp` in maniera *header-only*, ossia dichiarazione e definizione del container devono essere entrambe presenti in `include/bag.hpp`. Suggeriamo di scrivere prima `trie.cpp` e, in base alle operazioni che vi servono su `m_c`, implementare successivamente `bag.hpp`.
+Siete liberi di implementare a vostro piacimento il container `bag`, che mantiene l'insieme dei nodi figli ordinati per etichetta crescente (usando opportunamente `operator<` definito su `T`). Notate the `trie.hpp` include `bag.hpp`. Dovrete implementare `bag.hpp` in maniera *header-only*, ossia dichiarazione e definizione del container devono essere entrambe presenti in `include/bag.hpp`. Suggeriamo di scrivere prima `trie.cpp` e, in base alle operazioni che vi servono su `m_c`, implementare successivamente `bag.hpp`.
 
 **Importante:** Il file `trie.hpp` non va modificato in alcun modo. In particolare, non potete aggiungere membri di classe (nuove attributi, funzioni, tipi). Compileremo il codice usando la versione di `trie.hpp` contenuta su questo repository, quindi se fate delle modifiche a questo file, con ogni probabilità il vostro codice non compilerà sul nostro sistema.
 
