@@ -285,7 +285,7 @@ I metodi
 	template <typename T>
 	trie<T> const& trie<T>::operator[](std::vector<T> const& s) const;
 
-Devono restituire una reference/const-reference al *sotto-trie* raggiunto seguendo **il maggior numero** di elementi di `s` a partire dalla radice del trie. Per esempio, sia `t` il `trie<std::char>` di Figura 1. Dopo l'esecuzione del seguente codice:
+Devono restituire una reference/const-reference al *sotto-trie* raggiunto seguendo **il maggior numero** di elementi di `s` a partire dalla radice del trie, nell'ordine s[0], s[1], s[2], ... . Per esempio, sia `t` il `trie<std::char>` di Figura 1. Dopo l'esecuzione del seguente codice:
 
 	std::vector<char> s{'b', 'c', 'z'};
 	auto x = t[s];
