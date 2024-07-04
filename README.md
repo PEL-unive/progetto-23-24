@@ -322,6 +322,8 @@ Questo iteratore punta ad un qualsiasi nodo del trie. L'operatore `operator++` d
 	template <typename T>
 	node_iterator trie<T>::root();
 
+Nota: `t.root()` restituisce sempre un `node_iterator` che punta al nodo `t`.
+
 Il secondo iteratore è `leaf_iterator`.
 
 	template <typename T>
