@@ -50,9 +50,7 @@ affinchè `trie<T>` sia ben definito:
 
 Per esempio, `T=double` soddisfa i requisiti sopra. Anche `T=std::string` li soddisfa, a patto che le stringhe non contengano separatori.
 
-Il caso più semplice è un file vuoto, che codifica un `trie<T>` vuoto.
-
-A parte il file vuoto, secondo la definizione ricorsiva data sopra il caso base di `trie<T>` è una foglia. Una foglia viene rappresentata testualmente come segue:
+Secondo la definizione ricorsiva data sopra il caso base di `trie<T>` è una foglia. Una foglia viene rappresentata testualmente come segue:
 
 	x children = {}
 
