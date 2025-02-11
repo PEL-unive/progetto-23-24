@@ -1,0 +1,4 @@
+children = {
+	programming languages children = { c++ 1.1 children = {}, java 0.5 children = {} },
+	compilers children = { g++ 2.8 children = {}, javac 3.1 children = {}  }
+}

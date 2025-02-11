@@ -1,0 +1,21 @@
+children =
+{
+    a children = { b 3.2 children = { } },
+    b children =
+    {
+        b 2.9 children = { },
+        c children = { b 7.0 children = { } }
+    },
+    z children = {
+        b 2.9 children = { },
+        c children =
+        {
+            b children =
+            {
+                a  3.4 children = { },
+                v -3.4 children = { }
+            }
+        }
+    },
+    r 4.55 children = { }
+}

@@ -1,0 +1,12 @@
+children = {
+    a children = {
+        b children = {
+            a 1.0 children = {}
+        },
+        d 4.0 children = {},
+        c children = {
+            c 0.2 children = {}
+        }
+    },
+    c 0.2 children = {}
+}

@@ -1,0 +1,9 @@
+children = {
+    a children = {
+        b children = {
+            a 1.5 children = {},
+            c 1.1 children = {}
+        }
+    },
+    c 0.5 children = {}
+}
